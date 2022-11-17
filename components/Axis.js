@@ -20,35 +20,40 @@ export default function Axis() {
             {/* z */}
             <group>
                 <Text3D rotation={[0, 0, 0]} position={[-1, 0, 11]} font={font}>
-                    y {/* this is actually the Z axis internally */}
+                    x {/* this is actually the Z axis internally */}
                     <meshNormalMaterial />
                 </Text3D>
                 <Text3D rotation={[0, 0, 0]} position={[0, 11, -1]} font={font}>
                     z {/* this is actually the Y axis internally */}
                     <meshNormalMaterial />
                 </Text3D>
-                <Text3D rotation={[0, 0, 0]} position={[11, 0, -1]} font={font}>
-                    x
+                <Text3D rotation={[0, 0, 0]} position={[-11, 0, -1]} font={font}>
+                    y {/* this is actually the x axis internally | note: just the y 
+                    and z were supposed to be swapped but I already made
+                    the animation and was too lazy to fix an issue when I realized
+                    the phi rotation should go into the positive x direction
+                    if we're following the standard*/}
                     <meshNormalMaterial />
                 </Text3D>
             </group>
 
+            {/* z internally, marked with a x */}
             <Line 
                 points={[[0, 0, -10], [0, 0, 10]]}
-                color="blue"
+                color="red"
                 lineWidth={2}
             />
-            {/* y */}
+            {/* y internally, marked with a z*/}
             <Line 
                 points={[[0, -10, 0], [0, 10, 0]]}
                 color="green"
                 lineWidth={2}
             />
 
-            {/* x */}
+            {/* x internally, marked with a y */}
             <Line 
                 points={[[-10, 0, 0], [10, 0, 0]]}
-                color="red"
+                color="blue"
                 lineWidth={2}
             />
 

@@ -5,11 +5,11 @@ export default function Tick({ axis, offset }) {
     switch (axis) {
         case "x":
             points = [[offset, 0, -0.25], [offset, 0, 0.25]];
-            color = "red";
+            color = "blue";
             break;
         case "z":
             points = [[-0.25, 0, offset], [0.25, 0, offset]];
-            color = "blue";
+            color = "red";
             break;
         case "y_x":
             points = [[-0.25, offset, 0], [0.25, offset, 0]];
