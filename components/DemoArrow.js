@@ -8,9 +8,9 @@ export default function DemoArrow({ direction, length, color }) {
     const [thetaRotated, setThetaRotated] = useState(false);
     const [sphereVisible, setSphereVisible] = useState(false);
     const arrow = useRef();
-    const phi = useRef(Math.PI/128); // the overshoot appears to be random by +- Math.PI/128, & this has something to do with useFrame or my implementation but since it's just a demo, I don't mind letting this bug stay. I'll look into it later.
-    const theta = useRef(Math.PI/128); // same here
-    const bothEase = useRef(false);
+    const phi = useRef(Math.PI/128); // Nevermind, it appears it overshoots once on first render/frame loop, and is consistent
+    const theta = useRef(Math.PI/128); // after that, so if the reset function simply starts the refs at 0 it fixes everything
+    const bothEase = useRef(false); // Perhaps on subscription the loop is run once, adding an extra transformation? I'll have to look into it.
     const thetaFirst = useRef(false);
 
     useFrame(() => {
@@ -48,8 +48,8 @@ export default function DemoArrow({ direction, length, color }) {
         setPhiRotated(false);
         setThetaRotated(false);
         setSphereVisible(false);
-        phi.current = Math.PI/128;
-        theta.current = Math.PI/128;
+        phi.current = 0;
+        theta.current = 0;
         bothEase.current = false;
         thetaFirst.current = false;
     }
